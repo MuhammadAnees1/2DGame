@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+// its use for removing all bars e.g: states bar title bar etc and only display app layout
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+//
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
         TextView highScoreTxt = findViewById(R.id.highScoreTxt);
 
         final SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
-
+// this line is you for getting value from one activity to another activity
         highScoreTxt.setText("HighScore: " + prefs.getInt("highscore", 0));
-
+//
         isMute = prefs.getBoolean("isMute", false);
 
         final ImageView volumeCtrl = findViewById(R.id.volumeCtrl);

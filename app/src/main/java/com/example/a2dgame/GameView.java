@@ -1,7 +1,5 @@
 package com.example.a2dgame;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,9 +10,7 @@ import android.graphics.Rect;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.nfc.Tag;
 import android.os.Build;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 
@@ -23,7 +19,6 @@ import java.util.List;
 import java.util.Random;
 
 public class GameView extends SurfaceView implements Runnable {
-
     private Thread thread;
     private boolean isPlaying, isGameOver = false;
     int screenX, screenY, score = 0;
@@ -125,6 +120,8 @@ public class GameView extends SurfaceView implements Runnable {
 
         List<Bullet> trash = new ArrayList<>();
 
+//  Bullet is a Class and bullet is an object of Bullet and its use for add or remove bullets , bullets is an array
+
         for (Bullet bullet : bullets) {
 
             if (bullet.x > screenX)
@@ -195,6 +192,8 @@ public class GameView extends SurfaceView implements Runnable {
                 waitBeforeExiting ();
                 return;
             }
+//            "Canvas" typically refers to a graphical component that allows you to create and display graphical elements on a window or a panel.
+//            It is commonly used in graphical user interface (GUI) applications.
 
             canvas.drawBitmap(flight.getFlight(), flight.x, flight.y, paint);
 
@@ -221,7 +220,6 @@ public class GameView extends SurfaceView implements Runnable {
             editor.putInt("High score", score);
             editor.apply();
         }
-
     }
     private void sleep () {
         try {
@@ -236,7 +234,6 @@ public class GameView extends SurfaceView implements Runnable {
         thread.start();
     }
     public void pause () {
-
         try {
             isPlaying = false;
             thread.join();
@@ -246,7 +243,6 @@ public class GameView extends SurfaceView implements Runnable {
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (event.getX() < screenX / 2) {
@@ -264,6 +260,7 @@ public class GameView extends SurfaceView implements Runnable {
     public void newBullet() {
 
         if (!prefs.getBoolean("isMute", false))
+
             soundPool.play(sound, 1, 1, 0, 0, 1);
 
         Bullet bullet = new Bullet(getResources());

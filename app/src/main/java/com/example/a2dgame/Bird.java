@@ -10,12 +10,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 
 public class Bird {
-
     public int speed = 20;
     public boolean wasShot = true;
     int x = 0, y, width, height, birdCounter = 1;
     Bitmap bird1, bird2, bird3, bird4;
-
     Bird (Resources res) {
 
         bird1 = BitmapFactory.decodeResource(res, R.drawable.bird1);
